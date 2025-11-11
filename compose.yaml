@@ -1,0 +1,43 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      - MYSQL_USER=mailpanel_admin
+      - MYSQL_PASSWORD=mailpanel_secret
+      - MYSQL_DATABASE=mailpanel_db
+      - MYSQL_ROOT_PASSWORD=root
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - mailpanel_net
+    ports:
+      - 3308:3306
+    volumes:
+      - mailpanel_storage:/var/lib/mysql
+    container_name: mailpanel_db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - HOST=db
+      - USER=mailpanel_admin
+      - PASSWORD=mailpanel_secret
+      - DB=mailpanel_db
+    networks:
+      - mailpanel_net
+    ports:
+      - 8088:80
+    container_name: mailpanel_web
+networks:
+  mailpanel_net:
+volumes:
+  mailpanel_storage:
