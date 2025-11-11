@@ -1,4 +1,10 @@
-<?php include_once 'admin-setup/setup.php'; ?>
+<?php 
+include_once __DIR__ . '/admin-setup/helper.php'; 
+include_once __DIR__ . '/admin-setup/setup.php'; 
+include_once __DIR__ . '/database.php';
+include_once __DIR__ . '/login.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,10 +13,6 @@
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="assets/css/chosen.min.css"/>
         <link rel="stylesheet" href="assets/css/style.css"/>
-        <?php
-        include_once 'database.php';
-        include_once 'login.php';
-        ?>
     </head>
     <body>
         <?php

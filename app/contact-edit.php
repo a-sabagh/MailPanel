@@ -1,4 +1,5 @@
 <?php
+require_once './helper.php';
 if (isset($_GET['id'])) {
     $contact_id = $_GET['id'];
     ?>
@@ -59,5 +60,5 @@ if (isset($_GET['id'])) {
     </html>
     <?php
 } else {
-    header("Location: index.php");
+    app_redirect("index.php");
 } 

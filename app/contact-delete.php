@@ -1,4 +1,5 @@
 <?php
+require_once './helper.php';
 if(isset($_GET['id'])){
     include_once 'database.php';
     $contact_id = $_GET['id'];
@@ -7,10 +8,10 @@ if(isset($_GET['id'])){
     $stmt->bindParam(":id" , $contact_id);
     $result = $stmt->execute();
     if($result){
-        header("Location: index.php");
+        app_redirect("index.php");
     }else{
         echo "Error with deleting contact";
     }
 }else{
-    header("Location: index.php");
+    app_redirect("index.php");
 }

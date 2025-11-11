@@ -1,4 +1,6 @@
 <?php
+require_once './helper.php';
+
 $filename = "config.php";
 if(file_exists($filename)){
     include_once 'config.php';
@@ -32,8 +34,8 @@ if(file_exists($filename)){
             . "PRIMARY KEY (id)"
             . ")";
     $dbh->query($user_query);
-    header("Location: setup-mail.php");
+    app_redirect("admin-setup/setup-mail.php");
 }else{
     echo 'configuration is not successfully';
-    header("Location: index.php");
+    app_redirect("index.php");
 }

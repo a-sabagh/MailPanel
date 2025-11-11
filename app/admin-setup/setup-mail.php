@@ -1,4 +1,6 @@
 <?php
+require_once './helper.php';
+
 if (isset($_POST['save_configuration']) && file_exists("config.php")) {
     include_once 'config.php';
     $smtpsecure = $_POST['smtpsecure'];
@@ -19,7 +21,7 @@ if (isset($_POST['save_configuration']) && file_exists("config.php")) {
 	$stmt->bindParam(":password" , $password);
 	$result = $stmt->execute();
 	if($result){
-		header("Location: setup-user.php");
+		app_redirect("admin-setup/setup-user.php");
 	}else{
 		echo "Error With saving Configuration";
 	}

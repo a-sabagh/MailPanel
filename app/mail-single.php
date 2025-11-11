@@ -60,6 +60,6 @@
 </html>
 <?php
 }else{
-	header("Location: index.php");
+	app_redirect("index.php");
 }
 ?>

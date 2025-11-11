@@ -1,5 +1,7 @@
 <?php
 
+require_once './helper.php';
+
 if (isset($_POST['send_mail'])) {
     include_once 'includes/class.phpmailer.php';
     include_once 'includes/class.smtp.php';
@@ -56,13 +58,13 @@ if (isset($_POST['send_mail'])) {
     try {
         $result = $mail->send();
         if ($result) {
-            header("Location: index.php?send=true");
+            app_redirect("index.php?send=true");
         } else {
-            header("Location: index.php?send=false");
+            app_redirect("index.php?send=false");
         }
     } catch (phpmailerException $ex) {
         echo $ex->errorMessage();
     }
 } else {
-    header("Location: index.php");
+    app_redirect("index.php");
 }

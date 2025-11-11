@@ -1,4 +1,6 @@
-<?php 
+<?php
+require_once './helper.php';
+
 if(isset($_POST['setup_config'])){
     $dbname = $_POST['dbname'];
     $username = $_POST['username'];
@@ -14,7 +16,7 @@ if(isset($_POST['setup_config'])){
             . "define('DB' , '{$dbname}');\n";
     fwrite($handle, $file_content);
     fclose($handle);
-    header("Location: setup-schema.php");
+    app_redirect("admin-setup/setup-schema.php");
 }
 ?>
 <!DOCTYPE html>

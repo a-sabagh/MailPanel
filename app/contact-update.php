@@ -1,4 +1,5 @@
 <?php
+require_once './helper.php';
 
 if (isset($_POST['save_changes'])) {
     include_once 'database.php';
@@ -14,10 +15,10 @@ if (isset($_POST['save_changes'])) {
     $stmt->bindParam(":email", $email);
     $result = $stmt->execute();
     if ($result) {
-        header("Location: index.php");
+        app_redirect("index.php");
     } else {
         echo "Error with saving your changes";
     }
 } else {
-    header("Location: index.php");
+    app_redirect("index.php");
 }

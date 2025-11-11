@@ -1,4 +1,5 @@
 <?php
+require_once './helper.php';
 
 if (isset($_POST['save_configuration'])) {
     include_once 'database.php';
@@ -25,10 +26,10 @@ if (isset($_POST['save_configuration'])) {
     $stmt->bindParam(":password" , $password , PDO::PARAM_STR);
     $result = $stmt->execute();
     if($result){
-        header("Location: index.php");
+        app_redirect("index.php");
     }else{
         echo 'Error with save configuration';
     }
 }else{
-    header("Location: index.php");
+    app_redirect("index.php");
 }

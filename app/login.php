@@ -1,6 +1,7 @@
 <?php
-
 session_start();
+
+include_once 'admin-setup/setup.php'; 
 include_once "admin-setup/config.php";
 
 if (isset($_POST['login'])) {
@@ -62,14 +63,15 @@ function do_login($username, $password, $remember) {
                 if ($result) {
                     setcookie('mailpanel_identifier', $identifier , time() + 3600);
                     setcookie('mailpanel_username', $username , time() + 3600);
-                    header("Location: index.php");
+                    app_redirect("index.php");
                 }
             } else {
                 $_SESSION['mailpanel_login'] = 'true';
 				$_SESSION['mailpanel_username'] = $username;
-                header("Location: index.php");
+                app_redirect("index.php");
             }
         }
+		echo 'PASSWORD INCORRECT';
     } else {
         return FALSE;
     }
@@ -102,5 +104,5 @@ function do_logout(){
 	session_destroy();
 	setcookie("mailpanel_identifier" , "" , -1);
 	setcookie("mailpanel_username" , "" , -1);
-	header("Location: index.php");
+	app_redirect("index.php");
 }

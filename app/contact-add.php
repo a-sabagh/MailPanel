@@ -1,4 +1,5 @@
 <?php 
+require_once './helper.php';
 include_once 'database.php';
 if(isset($_POST["add_contact"])){
     $firstname = strip_tags(htmlspecialchars($_POST['firstname']));
@@ -11,10 +12,10 @@ if(isset($_POST["add_contact"])){
     $stmt->bindParam(":email" , $email);
     $result = $stmt->execute();
     if($result){
-        header("Location: index.php");
+        app_redirect("index.php");
     }else{
         echo "Error in adding contact";
     }
 }else{
-    header("Location: index.php");
+    app_redirect("index.php");
 }
