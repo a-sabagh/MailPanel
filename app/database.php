@@ -1,4 +1,6 @@
 <?php
+global $dbh;
+
 $filename = "admin-setup/config.php";
 if(file_exists($filename)){
     include_once "admin-setup/config.php";

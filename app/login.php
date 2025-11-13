@@ -3,6 +3,7 @@ session_start();
 
 include_once 'admin-setup/setup.php'; 
 include_once "admin-setup/config.php";
+include_once 'database.php';
 
 if (isset($_POST['login'])) {
     $username = strip_tags(htmlspecialchars($_POST['username']));
@@ -13,6 +14,8 @@ if (isset($_POST['login'])) {
 
 if(isset($_GET['logged_out']) && $_GET['logged_out'] == 'true'){ do_logout(); }
 function is_user_login() {
+	global $dbh;
+
     if (isset($_SESSION['mailpanel_login'])) {
         return TRUE;
     } else {
