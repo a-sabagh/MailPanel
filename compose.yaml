@@ -3,10 +3,11 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      - MYSQL_USER=mailpanel_admin
-      - MYSQL_PASSWORD=mailpanel_secret
-      - MYSQL_DATABASE=mailpanel_db
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=${USER}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
+      - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
+    env_file: .env
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       interval: 10s
@@ -29,9 +30,10 @@ services:
         condition: service_healthy
     environment:
       - HOST=db
-      - USER=mailpanel_admin
-      - PASSWORD=mailpanel_secret
-      - DB=mailpanel_db
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - DB=${DATABASE}
+    env_file: .env
     networks:
       - mailpanel_net
     ports:
