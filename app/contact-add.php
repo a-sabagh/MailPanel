@@ -1,5 +1,5 @@
 <?php 
-require_once './helper.php';
+require_once './admin-setup/helper.php';
 include_once 'database.php';
 if(isset($_POST["add_contact"])){
     $firstname = strip_tags(htmlspecialchars($_POST['firstname']));

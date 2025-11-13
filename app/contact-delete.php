@@ -1,5 +1,5 @@
 <?php
-require_once './helper.php';
+require_once './admin-setup/helper.php';
 if(isset($_GET['id'])){
     include_once 'database.php';
     $contact_id = $_GET['id'];

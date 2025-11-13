@@ -1,5 +1,5 @@
 <?php
-require_once './helper.php';
+require_once './admin-setup/helper.php';
 
 if (isset($_POST['save_changes'])) {
     include_once 'database.php';

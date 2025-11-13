@@ -1,6 +1,6 @@
 <?php
 
-require_once './helper.php';
+require_once './admin-setup/helper.php';
 
 if (isset($_POST['send_mail'])) {
     include_once 'includes/class.phpmailer.php';
